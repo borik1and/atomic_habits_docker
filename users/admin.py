@@ -6,4 +6,4 @@ from users.models import User
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
     exclude = ('password',)
-    list_display = ('username', 'email', 'is_active', 'is_staff')
+    list_display = ('pk', 'username', 'email', 'is_active', 'is_staff')
