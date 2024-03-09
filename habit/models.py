@@ -23,7 +23,7 @@ class Habit(models.Model):
         if self.related_habit and not self.related_habit.sign_pleasant_habit:
             raise ValidationError('Связанная привычка должна быть приятной.')
 
-        if 1 >= self.period >= 7:
+        if self.period < 1 or self.period > 7:
             raise ValidationError('Нельзя устанавливать привычку реже, менее 1 и более 7')
 
     def __str__(self):
