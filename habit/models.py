@@ -11,14 +11,13 @@ class Habit(models.Model):
     name = models.CharField(max_length=150, verbose_name='Название')
     action = models.TextField(verbose_name='Действие привычки')
     place = models.CharField(max_length=150, verbose_name='Место выполнения')
-    lead_time = models.DateTimeField(verbose_name='Время выполнения')
     sign_pleasant_habit = models.BooleanField(default=False, verbose_name='Признак приятности привычки')
     related_habit = models.ForeignKey('self', on_delete=models.SET_NULL, blank=True, null=True,
                                       verbose_name='Связанная привычка')
     period = models.IntegerField(default=1, verbose_name='Периодичность выполнения')
     reward = models.CharField(max_length=250, blank=True, verbose_name='Вознаграждение')
     time_to_complete = models.DurationField(default='00:02:00', verbose_name='Время на выполнение')
-    telegram_id = models.CharField(max_length=50, verbose_name='телеграм ID', **NULLABLE)
+    chat_id = models.CharField(max_length=50, verbose_name='телеграм ID', **NULLABLE)
     is_public = models.BooleanField(default=False, verbose_name='Признак публичности')
 
     def clean(self):
