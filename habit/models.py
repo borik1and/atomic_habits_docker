@@ -19,6 +19,7 @@ class Habit(models.Model):
     time_to_complete = models.DurationField(default='00:02:00', verbose_name='Время на выполнение')
     chat_id = models.CharField(max_length=50, verbose_name='телеграм ID', **NULLABLE)
     is_public = models.BooleanField(default=False, verbose_name='Признак публичности')
+    next_dispatch_time = models.DateTimeField(default=None, **NULLABLE, verbose_name='время следующей отправки')
 
     def clean(self):
         if self.related_habit and not self.related_habit.sign_pleasant_habit:
