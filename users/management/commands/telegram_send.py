@@ -1,6 +1,6 @@
 from django.core.management import BaseCommand
 
-from users.services import TelegramBotService
+from habit.services import TelegramBotService
 
 
 class Command(BaseCommand):
