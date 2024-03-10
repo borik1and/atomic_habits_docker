@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from habit.models import Habit
 from habit.paginators import HabitPaginator
 from habit.serializers import HabitSerializer
-from users.services import TelegramBotService
+from habit.services import TelegramBotService
 
 
 class HabitViewSet(viewsets.ModelViewSet):
