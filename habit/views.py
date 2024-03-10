@@ -29,18 +29,3 @@ class HabitViewSet(viewsets.ModelViewSet):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-@api_view(['POST'])
-def send_telegram_message(request):
-    chat_id = request.data.get('chat_id')
-    text = request.data.get('text')
-    if not chat_id or not text:
-        return Response({'error': 'Missing chat_id or text'}, status=400)
-
-    telegram_service = TelegramBotService()
-    response = telegram_service.send_message(chat_id, text)
-
-    if response.status_code == 200:
-        return Response({'message': 'Message sent successfully'}, status=200)
-    else:
-        return Response({'error': 'Failed to send message'}, status=500)
