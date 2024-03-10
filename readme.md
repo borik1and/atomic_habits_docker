@@ -6,24 +6,26 @@
 
 ## Установка
 
-1. Склонируйте репозиторий:
+1. Нужно переименовать фаил .env.example а и заполнить его по шаблону
+
+2. Склонируйте репозиторий:
 
 ```bash
 git clone https://github.com/borik1and/atomic_habits.git
 ```
-2. Установите зависимости:
+3. Установите зависимости:
 ```bash
 cd atomic_habits
 python3 -m venv venv
 source venv/bin/activate
 ```
 
-3. Примените миграции:
+4. Примените миграции:
 ```bash
 python manage.py migrate
 ```
 
-3. Запустите сервер разработки:
+5. Запустите сервер разработки:
 ```bash
 python manage.py runserver
 ```
