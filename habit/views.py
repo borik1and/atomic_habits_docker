@@ -15,6 +15,13 @@ class HabitViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     pagination_class = HabitPaginator
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        if self.request.user.is_authenticated:
+            return queryset.filter(self.request.user)
+        else:
+            return queryset.none()
+
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
