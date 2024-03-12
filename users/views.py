@@ -12,11 +12,6 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     permission_classes = [IsAuthenticated]
 
-    def perform_create(self, serializer):
-        user = serializer.save(is_active=True)
-        user.set_password(user.password)
-        user.save()
-
     def perform_update(self, serializer):
         user = serializer.save(is_active=True)
         user.set_password(user.password)
@@ -28,7 +23,9 @@ class UserRegistrationView(APIView):
     def post(self, request):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            user = serializer.save()
+            user.set_password(serializer.validated_data['password'])  # Хэширование пароля
+            user.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
