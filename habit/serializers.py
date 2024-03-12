@@ -39,7 +39,7 @@ class HabitSerializer(serializers.ModelSerializer):
                 "Нельзя выполнять привычку более 2х минут."
             )
 
-        if period and period > 7:
+        if period and period > timedelta(days=7):
             raise serializers.ValidationError(
                 "Нельзя устанавливать привычку реже, чем 1 раз в 7 дней."
             )
