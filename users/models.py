@@ -11,6 +11,7 @@ class User(AbstractUser):
     avatar = models.ImageField(upload_to='users/', verbose_name='аватар', **NULLABLE)
     country = models.CharField(max_length=50, verbose_name='Страна', **NULLABLE)
     is_active = models.BooleanField(default=True, verbose_name='Активный')
+    chat_id = models.CharField(max_length=50, verbose_name='телеграм ID', **NULLABLE)
 
     def __str__(self):
         return f'{self.username}{self.email}'
