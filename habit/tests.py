@@ -38,7 +38,7 @@ class HabitViewSetTests(APITestCase):
             action='Test Action',
             place='Test Place',
             sign_pleasant_habit=False,
-            period=1,
+            period='3',
             reward='',
             time_to_complete='00:01:00',
             is_public=False
@@ -55,7 +55,7 @@ class HabitViewSetTests(APITestCase):
             action='Test Action',
             place='Test Place',
             sign_pleasant_habit=False,
-            period=1,
+            period='1',
             reward='',
             time_to_complete='00:01:00',
             is_public=False
@@ -73,7 +73,7 @@ class HabitViewSetTests(APITestCase):
             action='Test Action',
             place='Test Place',
             sign_pleasant_habit=False,
-            period=1,
+            period='1',
             reward='',
             time_to_complete='00:01:00',
             is_public=False
