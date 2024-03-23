@@ -19,7 +19,8 @@ Atomic Habits Docker предоставляет простой способ ра
 ```bash
     git clone https://github.com/borik1and/atomic_habits_docker.git
 ```
-    
+### 2.1 Подготовка файла с данными
+Файл .env.example переименовать в .env и заполнить недостающие данные.
 
 ### 3. Переход в каталог проекта
 
