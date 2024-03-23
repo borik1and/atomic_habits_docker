@@ -84,10 +84,10 @@ config = Config(RepositoryEnv(ENVPATH))
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('NAME', default=''),
-        'HOST': config('HOST', default=''),
-        'USER': config('P_USER', default=''),
-        'PASSWORD': config('PASSWORD', default=''),
+        'NAME': 'postgres',
+        'HOST': 'db',
+        'USER': 'postgres',
+        'PASSWORD': 'mysecretpassword',
 
     }
 }
@@ -207,11 +207,12 @@ CELERY_TIMEZONE = config('CELERY_TIMEZONE', default='')
 CELERY_TASK_TRACK_STARTED = config('CELERY_TASK_TRACK_STARTED', default='')
 
 # Максимальное время на выполнение задачи
-CELERY_TASK_TIME_LIMIT = config('CELERY_TASK_TIME_LIMIT', default='')
+CELERY_TASK_TIME_LIMIT = 30 * 60
+
 
 CELERY_BEAT_SCHEDULE = {
     'task-name': {
-        'task': 'habit.tasks.check_messages_sending',  # Путь к задаче
-        'schedule': timedelta(minutes=10),  # Расписание выполнения задачи (например, каждые 10 минут)
+        'task': 'habit.tasks.send_message',  # Путь к задаче
+        'schedule': timedelta(minutes=1),  # Расписание выполнения задачи (например, каждые 10 минут)
     },
 }

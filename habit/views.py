@@ -9,7 +9,7 @@ from habit.permissions import IsOwnerOrReadOnly
 
 class HabitViewSet(viewsets.ModelViewSet):
     serializer_class = HabitSerializer
-    queryset = Habit.objects.all()
+    queryset = Habit.objects.order_by('id')
     permission_classes = [IsOwnerOrReadOnly]  # Добавляем кастомное разрешение
     pagination_class = HabitPaginator
 
